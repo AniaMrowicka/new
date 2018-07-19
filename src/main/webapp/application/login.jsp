@@ -6,6 +6,9 @@
 <c:set var="existingPassword" value="${applicationScope.users[username]}"/>
 <c:if test="${existingPassword != null}">
     <c:if test="${existingPassword == password}">
+        <%
+        session.setAttribute("currentUser",request.getParameter("username"));
+        %>
         <c:set var="currentUser" value="${username}" scope="session"/>
         <jsp:forward page="main.jsp"/>
     </c:if>
